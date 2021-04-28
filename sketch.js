@@ -10,7 +10,7 @@ function preload(){
 }
 
 function setup(){
-    createCanvas(800,400);
+    createCanvas(1530,750);
 
     database = firebase.database();
 
@@ -18,6 +18,7 @@ function setup(){
     balloonSprite.addAnimation("hotAir", balloonImg);
     balloonSprite.addImage("hotAir1", balloonImg1);
     balloonSprite.addImage("hotAir2", balloonImg2);
+    balloonSprite.scale = 1.2;
 
     var balloonPosition = database.ref('Balloon/Position');
     balloonPosition.on("value",readPosition,showError);
@@ -41,11 +42,12 @@ function draw(){
         writePosition(0,+1);
         balloonSprite.changeAnimation("hotAir2");
     }
+
     drawSprites();
 
     fill("black");
     textSize(20);
-    text("Move around with your cousins in the hot air balloon using ARROW KEYS to navigate", 10,380);
+    text("Move around with your cousins in the hot air balloon using ARROW KEYS to navigate", 300,720);
 }
 
 function readPosition(data){
